@@ -1,0 +1,16 @@
+.javascript-basic{
+    margin: 1rem 2rem;
+}
+.list-content{
+    display: inline-flex;
+}
+.table-contents{
+    font-size: 20px;
+    background: #e5dada;
+    padding: 5px;
+    width: 10rem;
+    text-align: center;
+    border: 2px solid;
+    border-radius: 5px;
+    margin: 0.5rem;
+}

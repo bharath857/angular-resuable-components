@@ -1,0 +1,70 @@
+<div class="javascript-basic">
+    <h3 class="text-center"> Basic Concents of java script </h3>
+    <div class="concepts">
+        <h4 class="text-start">Table of Contents</h4>
+        <p class="text-end">
+            <a href='{{ javaScript_basic}}' target="_blank">Link to MDN</a>
+        </p>
+        <div class="list-content" *ngFor="let concept of listOfConcepts">
+            <p class="table-contents">
+                <a href="javascript:void(0)">{{concept}}</a>
+            </p>
+        </div>
+    </div>
+    <br>
+    <br>
+    <hr>
+    <div class="list-string-menthds">
+        <p>Frequently used string methods that used in daily playtime </p>
+        <br>
+        <div class="list-content" *ngFor="let concept of listOfStringMentods; let i =index">
+            <p style="margin-right: 1rem;">{{ i+1 }}.
+                <a href="javascript:void(0)">{{concept}}</a>
+            </p>
+        </div>
+        <br>
+        <hr>
+        <div class="string-descriptions">
+            <div class="charat">
+                <h5>1. charAt()</h5>
+                <br>
+                <p>The <code>charAt()</code> method takes the index value as an argument and returns the corresponding
+                    character from the calling string.</p>
+                <pre>
+                    const str = "Hello World";
+                
+                    // using charAt() method
+                    console.log(str.charAt()); --> H   (default index value = 0, return first character)
+                    console.log(str.charAt(0)); --> H
+                    console.log(str.charAt(1)); --> e
+                    console.log(str.charAt(6)); --> W
+                    console.log(str.charAt(13));--> '' (index out of range, return empty string)
+                    console.log(str.charAt('a'));--> H (index can't be converted to an integer, return first character)
+    
+                    Can be accessed with 
+                    console.log(str[0]);
+                    console.log(str[1]);
+                    console.log(str[13]); // index out of range, return empty string
+                </pre>
+            </div>
+            
+            <div class="charCodeAt">
+                <h5>2. charCodeAt()</h5>
+                <br>
+                <p>The <code>charCodeAt()</code>  method is used to get <span class="focus2">the Unicode value</span> of any character from a string.</p>
+                <p>The method is applied on any string with the <span class="focus2">index</span> value of the character and it returns an integer between <span class="focus2">0</span> to <span class="focus2">65,535</span>.</p>
+
+                <pre>
+                    const quote = "Learning to code is learning to create and innovate";
+                
+                    console.log(quote.charCodeAt(0)); // first character
+                    console.log(quote.charCodeAt(quote.length - 1));// last character
+
+                    console	.log(quote.charCodeAt(-1)); // return NaN
+                    console.log(quote.charCodeAt(100));// return NaN
+                </pre>
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>

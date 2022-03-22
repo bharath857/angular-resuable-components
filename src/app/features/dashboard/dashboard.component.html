@@ -1,1 +1,85 @@
-<p>dashboard works!</p>
+<div class="row">
+  <h2 class="text-center"> All at one place</h2>
+</div>
+<div class="content">
+  <div class="row">
+    <div class="col-4">
+      <mat-card class="example-card">
+        <mat-card-subtitle>Basic</mat-card-subtitle>
+        <mat-card-title>Java Script </mat-card-title>
+        <mat-card-content>
+          <p>In this part you will learn about Basic of java script</p>
+          <p>{{ longText }}</p>
+        </mat-card-content>
+        <mat-divider inset></mat-divider>
+        <br>
+        <div class="mat-actions">
+          <button color="primary" mat-raised-button routerLink="/javascript-basic" >Learn More</button>
+          <span>&nbsp;&nbsp; Find more about JavaAcript &nbsp;&nbsp; </span>
+
+          <button mat-card-actions align="end" mat-raised-button> Git code</button>
+        </div>
+        <br>
+        <mat-card-footer>
+          <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+        </mat-card-footer>
+      </mat-card>
+    </div>
+    <div class="col-4">
+      <mat-card class="example-card">
+        <mat-card-subtitle>Java Script</mat-card-subtitle>
+        <mat-card-title>Java Script</mat-card-title>
+        <mat-card-content>
+          <p>More on java script play ground</p>
+          <p>{{ longText }}</p>
+        </mat-card-content>
+        <mat-divider inset></mat-divider>
+        <br>
+        <div class="mat-actions">
+          <button color="primary" mat-raised-button>Learn More</button>
+          <span>&nbsp;&nbsp; Find more about JavaAcript &nbsp;&nbsp; </span>
+          <button mat-card-actions align="end" mat-raised-button> Git code</button>
+        </div>
+        <br>
+        <mat-card-footer>
+          <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+        </mat-card-footer>
+      </mat-card>
+    </div>
+    <div class="col-4">
+      <mat-card class="example-card">
+        <mat-card-subtitle>Advanced</mat-card-subtitle>
+        <mat-card-title>Java Script</mat-card-title>
+        <mat-card-content>
+          <p> In this part you will lean about advanced concepts about java script</p>
+          <p>{{ longText }}</p>
+        </mat-card-content>
+        <mat-divider inset></mat-divider>
+        <br>
+        <div class="mat-actions">
+          <button color="primary" mat-raised-button>Learn More</button>
+          <span>&nbsp;&nbsp; Find more about JavaAcript &nbsp;&nbsp; </span>
+
+          <button mat-card-actions align="end" mat-raised-button> Git code</button>
+        </div>
+        <br>
+        <mat-card-footer>
+          <!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile
+        *ngFor="let tile of tiles"
+        [colspan]="tile.cols"
+        [rowspan]="tile.rows"
+        [style.background]="tile.color">
+      {{tile.text}}
+    </mat-grid-tile>
+  </mat-grid-list> -->
