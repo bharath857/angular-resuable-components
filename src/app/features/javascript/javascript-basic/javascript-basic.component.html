@@ -2,494 +2,603 @@
     <h3 class="text-center"> Basic Concents of java script </h3>
     <div class="concepts">
         <h4 class="text-start">Table of Contents</h4>
-        <p class="text-end">
-            <a href='{{ javaScript_basic}}' target="_blank">Link to MDN</a>
-        </p>
-        <div class="list-content" *ngFor="let concept of listOfConcepts">
+
+        <div class="list-content" *ngFor="let list of listOfConcepts">
             <p class="table-contents">
-                <a href="javascript:void(0)">{{concept}}</a>
+                <a (click)="concept = list" href="javascript:void(0)">{{list}}</a>
             </p>
         </div>
     </div>
     <br>
     <br>
     <hr>
-    <div class="list-string-menthds">
+    <div *ngIf="concept === 'String' " class="list-string-menthds">
+
         <p>Frequently used string methods that used in daily playtime </p>
         <br>
         <div class="list-content" *ngFor="let concept of listOfStringMentods; let i =index">
             <p style="margin-right: 1rem;">{{ i+1 }}.
-                <a href="javascript:void(0)">{{concept}}</a>
+                <a (click)="selectedString = concept" href="javascript:void(0)">{{concept}}</a>
             </p>
         </div>
+
         <br>
+        <button color="primary" (click)="((showAllStringMenthods = !showAllStringMenthods )&& (selectedString = '')) "
+            mat-raised-button>
+            {{ !showAllStringMenthods ? 'Show ALL' : 'Hide ALL' }}
+        </button>
+        <p class="text-end">
+            <a href='{{ javaScript_basic}}' target="_blank">Link to MDN</a>
+        </p>
         <hr>
-        <div class="string-descriptions">
-            <div class="charat">
-                <h5>1. charAt()</h5>
-                <br>
-                <p>The <code>charAt()</code> method takes the index value as an argument and returns the corresponding
-                    character from the calling string.</p>
-                <pre>
-                    const str = "Hello World";
-                
-                    // using charAt() method
-                    console.log(str.charAt()); --> H   (default index value = 0, return first character)
-                    console.log(str.charAt(0)); --> H
-                    console.log(str.charAt(1)); --> e
-                    console.log(str.charAt(6)); --> W
-                    console.log(str.charAt(13));--> '' (index out of range, return empty string)
-                    console.log(str.charAt('a'));--> H (index can't be converted to an integer, return first character)
-    
-                    Can be accessed with 
-                    console.log(str[0]);
-                    console.log(str[1]);
-                    console.log(str[13]); // index out of range, return empty string
-                </pre>
+        <div class="row">
+            <div class="col-7">
+                <div class="string-descriptions">
+                    <div *ngIf="selectedString === 'charAt()' || showAllStringMenthods " class="charat">
+                        <h5>1. charAt()</h5>
+                        <br>
+                        <p>The <code>charAt()</code>
+                            method takes the index value as an argument and returns the
+                            corresponding
+                            character from the calling string.
+                        </p>
+                        <pre>
+    const str = "Hello World";
+
+    // using charAt() method
+    console.log(str.charAt()); --> H   (default index value = 0, return first character)
+    console.log(str.charAt(0)); --> H
+    console.log(str.charAt(1)); --> e
+    console.log(str.charAt(6)); --> W
+    console.log(str.charAt(13));--> '' (index out of range, return empty string)
+    console.log(str.charAt('a'));--> H (index can't be converted to an integer, return first character)
+
+    Can be accessed with 
+    console.log(str[0]);
+    console.log(str[1]);
+    console.log(str[13]); // index out of range, return empty string
+    </pre>
+                    </div>
+
+                    <div *ngIf="selectedString === 'charCodeAt()' || showAllStringMenthods " class="charCodeAt">
+                        <h5>2. charCodeAt()</h5>
+                        <br>
+                        <p>The <code>charCodeAt()</code>
+                            method is used to get <span class="focus2">the Unicode
+                                value</span> of
+                            any character from a string.
+                        </p>
+                        <p>The method is applied on any string with the
+                            <span class="focus2">index</span> value of the
+                            character and it returns an integer between
+                            <span class="focus2">0</span> to <span class="focus2">65,535</span>.
+                        </p>
+
+                        <pre>
+    const quote = "Learning to code is learning to create and innovate";
+
+    console.log(quote.charCodeAt(0)); // first character
+    console.log(quote.charCodeAt(quote.length - 1));// last character
+
+    console.log(quote.charCodeAt(-1)); // return NaN
+    console.log(quote.charCodeAt(100));// return NaN
+    </pre>
+                    </div>
+
+                    <div *ngIf="selectedString === 'concat(string1, string2, ...)' || showAllStringMenthods "
+                        class="concat">
+                        <h5>3. concat()</h5>
+                        <br>
+                        <p>The <code>concat()</code>
+                            method can take any number of strings as an argument.
+                        </p>
+                        <p>The <code>concat
+                            string method </code> in javascript concatenates the passed string in
+                            the method to the
+                            calling
+                            string and returns the concatenated string as a new string.
+                        </p>
+
+                        <pre>
+    const firstName = "Hello";
+    const lastname = "World";
+
+    // using concat method
+    let result1 = firstName.concat(" ", lastname);
+    console.log(result1);
+
+    // multiple arguments
+    let result2 = "Learning".concat(" ", "to", " ", "code.");
+    console.log(result2);
+
+    const firstName = "Hello";
+    const lastname = "World";
+
+    console.log(firstName + " " + lastname);
+    console.log("Learning" + " " +  "to" + " " + "code.");
+    </pre>
+                        <p class="alert alert-info"><span class="bold">Note</span>:
+                            for concatenation of string it is suggested to use assignment operators
+                            (<code>+</code> or <code>+=</code>) instead of the <code>concat</code> method.
+                        </p>
+
+                    </div>
+
+                    <div *ngIf="selectedString === 'includes()' || showAllStringMenthods " class="includes">
+                        <h5>4. includes ()</h5>
+                        <br>
+                        <p>The <span class="focus">includes()</span>
+                            string method is used to search if a string
+                            contains
+                            another string
+                            within it or not.
+                        </p>
+                        <p>The method is applied on a string and the string to be
+                            searched is passed as an argument in
+                            the
+                            method, if the
+                            calling string contains the searched string then it returns <code>true</code> else return
+                            <code>false</code>.
+                        </p>
+
+                        <pre>
+    const quote = "Learning to code is learning to create and innovate";
+    const search = "innovate";
+    console.log(quote.includes(search)); // true
+    </pre>
+                        <p class="alert alert-info"><span class="bold">Note</span>: The <span
+                                class="focus2">includes()</span>
+                            method is
+                            case-sensitive.</p>
+                    </div>
+
+                    <div *ngIf="selectedString === 'endsWith()' || showAllStringMenthods " class="endsWith">
+                        <h5>5. endsWith()</h5>
+                        <br>
+                        <p>The <span class="focus">endsWith()</span> string method is used to determine whether a string
+                            ends
+                            with some given substring or not.</p>
+                        <p>If the string ends with a specified substring then it returns <span
+                                class="focus2">true</span> if not
+                            then return <span class="focus2">false</span>.</p>
+                        <p>The method is applied on a string and the substring is passed as the first argument to the
+                            method.
+                        </p>
+
+                        <pre>
+    const str1 = "Learning javascript";
+    console.log(str1.endsWith("javascript")); // true
+    const str2 = "How fast is javascript?";
+    console.log(str2.endsWith("?")); // true
+    </pre>
+                    </div>
+
+                    <div *ngIf="selectedString === 'indexOf()' || showAllStringMenthods " class="indexOf">
+                        <h5>6. indexOf()</h5>
+                        <br>
+                        <p>The <span class="focus">indexOf()</span> method is used to find the index of the first
+                            occurrence of
+                            the specified value within the calling string.</p>
+                        <p>If the specified value (string or character) exist within the calling string then it returns
+                            the
+                            <span class="focus2">index</span> value of the first occurrence of the value and if no such
+                            value is
+                            found then it returns <span class="focus2">-1</span>.
+                        </p>
+
+                        <pre>
+    const quote = "Learn to code";
+    console.log(quote.indexOf("Learn"));
+    console.log(quote.indexOf("code"));
+    console.log(quote.indexOf("to"));
+
+    const sentence = "Carbon emission is increasing day by day";
+
+    // no substring provided to search        
+    console.log(sentence.indexOf());
+    console.log('undefined'.indexOf());
+    // start searching from index 40
+    console.log(sentence.indexOf("day", 40));
+    </pre>
+                    </div>
+
+                    <div *ngIf="selectedString === 'lastIndexOf()' || showAllStringMenthods " class="lastIndexOf">
+                        <h5>8. lastIndexOf ()</h5>
+                        <br>
+                        <p>The <code>lastIndexOf()</code> string method in javascript searches the last occurrence of a
+                            substring within a string. The method starts searching from the end of the string for
+                            efficiency.
+                        </p>
+
+                        <pre>
+    const sentence = "to do or not to do";
+
+    // finding index of last "to"
+    console.log(sentence.lastIndexOf("to"));
+
+
+    const sentence = "to do or not to do";
+
+    // nothing to search, so will search for 'undefined'
+    console.log(sentence.lastIndexOf());
+    console.log('undefined'.lastIndexOf());
+
+    </pre>
+                    </div>
+
+                    <div *ngIf="selectedString === 'match()' || showAllStringMenthods " class="match">
+                        <h5>8. match ()</h5>
+                        <br>
+                        <p>The <code>match()</code> method in JavaScript matches a series characters within a string
+                            using a
+                            <span class="focus2">regular expression</span>.
+                        </p>
+                        <p>The method accepts a regular expression as an argument and use that regular expression to
+                            find any
+                            match. If the match is found then it returns the matching content from the string as an
+                            <b>array</b>
+                            of strings.
+                        </p>
+
+                        <pre>
+    const str = "Learning To Code Is Learning To Create And Innovate";
+    const exp = /[A-Z]/g; // Matching capital characters
+    const matches = str.match(exp);
+    console.log(matches);
+    // output: [ "L", "T", "C", "I", "L", "T", "C", "A", "I" ]
+
+    const regexp = "to"; // not a regular expression
+    const matches = str.match(regexp);
+    console.log(matches);
+    </pre>
+                    </div>
+
+                    <div *ngIf="selectedString === 'matchAll()' || showAllStringMenthods " class="matchAll">
+                        <h5>9. matchAll ()</h5>
+                        <br>
+                        <p>The <a href="../javascript-string-matchall.php" target="_blank" rel="noopener"
+                                class="bpl">matchAll()
+                                string method</a> in javascript is an improved variant of the <span
+                                class="focus">match()</span>
+                            method.</p>
+                        <p>But the <code>matchAll()</code> method finds all the matching string with its capturing group
+                            against
+                            the regular expression.<span id="ezoic-pub-ad-placeholder-193"
+                                class="ezoic-adpicker-ad"></span></p>
+                        <p>Instead of returning an array the <span class="focus">matchAll()</span> method returns an
+                            iterator to
+                            all results matching the string. You will have to explicitly convert it to array using
+                            sperad
+                            operator (<code>[...]</code>) or using <span class="focus">Array.from()</span> method.</p>
+
+                        <pre>
+    const series = "to do or not to do";
+
+    // matching "do" and capturing group
+    const array = [...series.matchAll(/d(o)/g)];
+    console.log(array);
+    console.log(array[0])
+    </pre>
+                        <p class="alert alert-info"><span class="bold">Note</span>: It is compulsory to use <span
+                                class="focus2">g</span> flag with the <span class="focus">matchAll()</span> method.</p>
+
+                    </div>
+
+                    <div *ngIf="selectedString === 'repeat()' || showAllStringMenthods " class="repeat">
+                        <h5>10. repeat()</h5>
+                        <br>
+                        <p>The <a rel="noopener" class="bpl">repeat() method</a> concatenates a passed string by a
+                            specified
+                            number of times and return it as a new string.</p>
+                        <p>A number of times string is to be repeated is passed as an argument in the method, where the
+                            number
+                            lies between <span class="focus2">0</span> and <span class="focus2">+Infinity</span>.</p>
+
+                        <pre>
+    const str = "Tick tock, ";
+
+    // repeat the string by 2 times
+    console.log(str.repeat(2));
+    // converts the decimal value to integer
+    console.log(str.repeat(3.5));
+    // repeat 0 times
+    console.log(str.repeat(0));
+    </pre>
+                    </div>
+
+                    <div *ngIf="selectedString === 'replace()' || showAllStringMenthods " class="replace">
+                        <h5>11. replace ()</h5>
+                        <br>
+                        <p>The <a href="../replace-string-javascript.php" target="_blank" rel="noopener"
+                                class="bpl">replace
+                                method</a> selects one or all matches from a string and replace it with a <span
+                                class="focus2">replacement string</span> and return it as new string.</p>
+                        <p>To find the match method use <span class="focus2">string</span> or <span
+                                class="focus2">regular
+                                expression</span>. When a string is passed as an argument then it select only the first
+                            match
+                            while when a regular expression is passed then it selects all the matches.</p>
+
+                        <pre>
+    const str = "Carbon emission is increasing day by day.";
+
+    // using string to match
+    console.log(str.replace("day", "year"));
+
+    </pre>
+                    </div>
+
+                    <div *ngIf="selectedString === 'replaceAll()' || showAllStringMenthods " class="replaceAll">
+                        <h5>12. replaceAll ()</h5>
+                        <br>
+                        <p>The <a href="../replace-all-string-javascript.php" target="_blank" rel="noopener"
+                                class="bpl">replaceAll method</a> returns a new string after replacing all occurrences
+                            of
+                            matched pattern with a replacement string.</p>
+                        <p>Unlike <span class="focus">replace()</span> method it replaces all the occurrences whether
+                            the given
+                            pattern is a string or a regular expression.</p>
+
+
+                        <pre>
+    const str = "Carbon emission is increasing day by day.";
+
+    // select all match using both string or regular expression
+    console.log(str.replaceAll("day", "year"));
+    console.log(str.replaceAll(/day/g, "month"));
+
+    </pre>
+                        <p class="alert alert-info"><span class="bold">Note</span>: While using regular expression in
+                            the <span class="focus">replaceAll()</span> method using a global flag (<span
+                                class="bold">g</span>) is
+                            compulsory with it otherwise it will throw a 'TypeError'.</p>
+                    </div>
+
+                    <div *ngIf="selectedString === 'search()' || showAllStringMenthods " class="search">
+                        <h5>13. replaceAll ()</h5>
+                        <br>
+                        <p>The <a href="../javascript-string-search.php" target="_blank" rel="noopener"
+                                class="bpl">search
+                                string method</a> in javascript is used to determine whether a pattern exists within the
+                            calling
+                            string or not, if it exists then the method returns the index value of the first match
+                            within the
+                            string.</p>
+                        <p>The <span class="focus">search</span> method uses regex to search for a pattern in a string,
+                            if a
+                            string is passed to search for then the method implicitly convert it to regex.</p>
+
+                        <pre>
+    const str = "kjhBfdbAjdbj";
+    console.log(str.search(/[A-Z]/g));
+
+    </pre>
+                    </div>
+
+                    <div *ngIf="selectedString === 'spice()' || showAllStringMenthods " class="slice">
+                        <h5>14. slice()</h5>
+                        <br>
+                        <p>The <a href="../javascript-slice-string.php" target="_blank" rel="noopener" class="bpl">slice
+                                string
+                                method</a> in javascript extracts a part of the string and returns it as a new
+                            string.<span id="ezoic-pub-ad-placeholder-196" class="ezoic-adpicker-ad"></span></p>
+                        <p>The <code>slice()</code> takes 2 arguments, the first argument is the start index for the
+                            slicing
+                            string and the second argument is the end of the slicing string, where the second argument
+                            is
+                            optional.</p>
+                        <p>The default value of <span class="focus2">endIndex</span> is <span
+                                class="focus2">str.length</span>
+                            When the second argument is not passed then the string is sliced from 'startIndex' to the
+                            end of the
+                            string.</p>
+
+                        <pre>
+    const sentence = "Carbon emission is increasing day by day";
+    console.log(sentence.slice(5, 15));
+    console.log(sentence.slice(5));
+    console.log(sentence.slice(-15, -5));
+
+    </pre>
+                    </div>
+
+                    <div *ngIf="selectedString === 'split()' || showAllStringMenthods " class="split ">
+                        <h5>15. split()</h5>
+                        <br>
+                        <p>The <a href="../split-in-javascript.php" target="_blank" rel="noopener" class="bpl">split
+                                string
+                                method</a> in javascript divides the given string intro substring and returns an array
+                            of
+                            substrings.</p>
+
+                        <pre>
+    const sentence = "Carbon emission is increasing day by day";
+
+    // no pattern -> return whole string in array
+    console.log(sentence.split());
+    // split at each space
+    console.log(sentence.split(''));
+    // split at each space
+    console.log(sentence.split(' '));
+    // split at each 'is'
+    console.log(sentence.split('is'));
+
+    </pre>
+                    </div>
+
+                    <div *ngIf="selectedString === 'startsWith()' || showAllStringMenthods " class="startsWith">
+                        <h5>16. startsWith ()</h5>
+                        <br>
+                        <p>The <a href="../javascript-startswith.php" target="_blank" rel="noopener"
+                                class="bpl">startsWith
+                                string method</a> in javascript determines whether a string starts with some given
+                            substring or
+                            not. If it starts with the desired string then it returns <code>true</code> else return
+                            <code>false</code>.
+                        </p>
+                        <p>The <span class="focus">startsWith</span> method is case-sensitive.</p>
+                        <pre>
+    const sentence = "Carbon emission is increasing day by day";
+    console.log(sentence.startsWith("Car"));
+    console.log(sentence.startsWith("carbon")); // return false case-sensitive
+    console.log(sentence.startsWith("bon", 3));
+
+    </pre>
+                    </div>
+
+                    <div *ngIf="selectedString === 'substr()' || showAllStringMenthods " class="substr">
+                        <h5>17. substr ()</h5>
+                        <br>
+                        <p>The <a href="../substring-in-javascript.php#substr-method" target="_blank" rel="noopener"
+                                class="bpl">substr() string method</a> in javascript is used to extract a substring from
+                            a
+                            string. It returns a part of the string, starting at a specific index and ending after a
+                            given
+                            number of characters.</p>
+
+                        <code
+                            class="language-js">str<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span>startIndex<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">,</span> length<span class="token punctuation">]</span><span class="token punctuation">)</span></code>
+                        <ul>
+                            <li><span class="focus2">startIndex</span> - It specifies the index value from where the
+                                substring
+                                starts</li>
+                            <li><span class="focus2">length</span> - It defines number of characters to be extracted
+                            </li>
+                        </ul>
+                        <p>If the value of <span class="focus2">startIndex</span> is negative then the index is counted
+                            from the
+                            end of the string in opposite direction. If it is <code>NaN</code> then it is treated as 0.
+                        </p>
+
+                        <pre>
+    const sentence = "Carbon emission is increasing day by day";
+
+    // start at index 10, cut 6 characters
+    console.log(sentence.substr(10, 6));
+    // start at index 10, cut all characters
+    console.log(sentence.substr(10));
+
+    // negative index
+    console.log(sentence.substr(-4, 3));
+
+    </pre>
+                    </div>
+
+                    <div *ngIf="selectedString === 'substring()' || showAllStringMenthods " class="substring">
+                        <h5>18. substring()</h5>
+                        <br>
+                        <p style="height: auto !important;">The <a
+                                href="../substring-in-javascript.php#substring-method" target="_blank" rel="noopener"
+                                class="bpl">substring() method</a> extracts a part of string between 2 given index
+                            values. It returns a part of the string, starting at a specific index and ending after a
+                            given number of characters.<span id="ezoic-pub-ad-placeholder-198"
+                                class="ezoic-adpicker-ad"></span></p>
+                        <code
+                            class="language-js">str<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>startIndex<span class="token punctuation">,</span> endIndex<span class="token punctuation">)</span></code>
+
+                        <ul>
+                            <li><span class="focus2">startIndex</span> - It specifies the index value from where the
+                                substring starts</li>
+                            <li><span class="focus2">endIndex</span> - It specifies the index value from where the
+                                substring ends</li>
+                        </ul>
+                        <p>If <span class="focus2">endIndex</span> is not specified then it is treated as the last
+                            character of the string.</p>
+
+                        <pre>
+    const sentence = "Carbon emission is increasing day by day";
+
+    // extracting string
+    // start at index 10, cut all characters
+    console.log(sentence.substring(10));
+    // start at index 10, and end at index 20
+    console.log(sentence.substring(10, 20));
+
+    // startIndex > endIndex
+    console.log(sentence.substring(20, 10));
+    </pre>
+                    </div>
+
+                    <div *ngIf="selectedString === 'toLowerCase()' || showAllStringMenthods " class="toLowerCase">
+                        <h5>18. toLowerCase()</h5>
+                        <br>
+                        <p>The <code>toLowerCase()</code> string method in javascript converts the case of a string to
+                            lowercase and returns it as a new string.</p>
+
+                        <pre>
+    const sentence = "CARBON emission IS INCREASING DAY BY DAY";
+    console.log(sentence.toLowerCase());
+    </pre>
+                    </div>
+
+                    <div *ngIf="selectedString === 'toUpperCase()' || showAllStringMenthods " class="toUpperCase">
+                        <h5>18. toUpperCase()</h5>
+                        <br>
+                        <p>The <a href="../javascript-uppercase.php" target="_blank" rel="noopener"
+                                class="bpl">toUpperCase string method</a> in javascript returns a new string by
+                            converting the calling string to uppercase.</p>
+
+                        <pre>
+    const sentence = "carbon emission is increasing day by day";
+    console.log(sentence.toUpperCase());
+    </pre>
+                    </div>
+
+                    <div *ngIf="selectedString === 'toString()' || showAllStringMenthods " class="toString">
+                        <h5>18. toString()</h5>
+                        <br>
+                        <p>The <code>toString()</code> string method in javascript returns a string representing the
+                            specified object.</p>
+                        <p style="height: auto !important;">This method also convert numbers to strings in a different
+                            number system. For example you can convert a number to a string in binary system by using
+                            <code>toString(2)</code>, octal system by using <code>toString(8)</code> and hexadecimal
+                            system by using <code>toString(16)</code>, etc.<span id="ezoic-pub-ad-placeholder-199"
+                                class="ezoic-adpicker-ad"></span>
+                        </p>
+
+                        <pre>
+        const str = new String("hello World!");
+        console.log(str.toString(str));
+        const num = 20;
+        console.log(num.toString(2));
+        </pre>
+                    </div>
+
+                    <div *ngIf="selectedString === 'trim()' || showAllStringMenthods " class="trim">
+                        <h5>18. trim()</h5>
+                        <br>
+                        <p>The <code>trim()</code> string method in javascript removes whitespaces from both ends of the
+                            string. Whitespaces are space, tabs, newline, etc.</p>
+
+                        <pre>
+    const str = "    TutorialsTonight    ";
+    console.log(str.trim());
+    </pre>
+                    </div>
+
+                    <div *ngIf="selectedString === 'valueOf()' || showAllStringMenthods " class="valueOf">
+                        <h5>18. valueOf()</h5>
+                        <br>
+                        <p>The <code>valueOf()</code> string method in javascript returns the primitive value of a
+                            <b>String object</b>.
+                        </p>
+
+                        <pre>
+    const str = new String("hello world");
+    console.log(str.valueOf(str));
+    </pre>
+                    </div>
+                </div>
             </div>
-
-            <div class="charCodeAt">
-                <h5>2. charCodeAt()</h5>
-                <br>
-                <p>The <code>charCodeAt()</code> method is used to get <span class="focus2">the Unicode value</span> of
-                    any character from a string.</p>
-                <p>The method is applied on any string with the <span class="focus2">index</span> value of the character
-                    and it returns an integer between <span class="focus2">0</span> to <span
-                        class="focus2">65,535</span>.</p>
-
-                <pre>
-                    const quote = "Learning to code is learning to create and innovate";
-                
-                    console.log(quote.charCodeAt(0)); // first character
-                    console.log(quote.charCodeAt(quote.length - 1));// last character
-
-                    console.log(quote.charCodeAt(-1)); // return NaN
-                    console.log(quote.charCodeAt(100));// return NaN
-                </pre>
-            </div>
-
-            <div class="concat">
-                <h5>3. concat()</h5>
-                <br>
-                <p>The <code>concat()</code> method can take any number of strings as an argument.</p>
-                <p>The <a href="../javascript-concat-string.php" target="_blank" rel="noopener" class="bpl">concat
-                        string method</a> in javascript concatenates the passed string in the method to the calling
-                    string and returns the concatenated string as a new string.</p>
-
-                <pre>
-                    const firstName = "Hello";
-                    const lastname = "World";
-
-                    // using concat method
-                    let result1 = firstName.concat(" ", lastname);
-                    console.log(result1);
-
-                    // multiple arguments
-                    let result2 = "Learning".concat(" ", "to", " ", "code.");
-                    console.log(result2);
-
-                    <p class="alert alert-info"><span class="bold">Note</span>: for concatenation of string it is suggested to use assignment operators (<code>+</code> or <code>+=</code>) instead of the <code>concat</code> method.</p>
-
-                    const firstName = "Hello";
-                    const lastname = "World";
-
-                    console.log(firstName + " " + lastname);
-                    console.log("Learning" + " " +  "to" + " " + "code.");
-                </pre>
-            </div>
-
-            <div class="includes">
-                <h5>5. includes ()</h5>
-                <br>
-                <p>The <span class="focus">includes()</span> string method is used to search if a string contains
-                    another string
-                    within it or not.</p>
-                <p>The method is applied on a string and the string to be searched is passed as an argument in the
-                    method, if the
-                    calling string contains the searched string then it returns <code>true</code> else return
-                    <code>false</code>.
-                </p>
-                <p class="alert alert-info"><span class="bold">Note</span>: The <span class="focus2">includes()</span>
-                    method is
-                    case-sensitive.</p>
-                <pre>
-                    const quote = "Learning to code is learning to create and innovate";
-                    const search = "innovate";
-                    console.log(quote.includes(search)); // true
-                </pre>
-            </div>
-
-            <div class="endsWith">
-                <h5>6. endsWith()</h5>
-                <br>
-                <p>The <span class="focus">endsWith()</span> string method is used to determine whether a string ends
-                    with some given substring or not.</p>
-                <p>If the string ends with a specified substring then it returns <span class="focus2">true</span> if not
-                    then return <span class="focus2">false</span>.</p>
-                <p>The method is applied on a string and the substring is passed as the first argument to the method.
-                </p>
-
-                <pre>
-                    const str1 = "Learning javascript";
-console.log(str1.endsWith("javascript")); // true
-const str2 = "How fast is javascript?";
-console.log(str2.endsWith("?")); // true
-                </pre>
-            </div>
-
-            <div class="indexOf">
-                <h5>7. indexOf()</h5>
-                <br>
-                <p>The <span class="focus">indexOf()</span> method is used to find the index of the first occurrence of
-                    the specified value within the calling string.</p>
-                <p>If the specified value (string or character) exist within the calling string then it returns the
-                    <span class="focus2">index</span> value of the first occurrence of the value and if no such value is
-                    found then it returns <span class="focus2">-1</span>.</p>
-
-                <pre>
-                    const quote = "Learn to code";
-console.log(quote.indexOf("Learn"));
-console.log(quote.indexOf("code"));
-console.log(quote.indexOf("to"));
-
-const sentence = "Carbon emission is increasing day by day";
-
-// no substring provided to search        
-console.log(sentence.indexOf());
-console.log('undefined'.indexOf());
-// start searching from index 40
-console.log(sentence.indexOf("day", 40));
-                </pre>
-            </div>
-
-            <div class="lastIndexOf">
-                <h5>8. lastIndexOf ()</h5>
-                <br>
-                <p>The <code>lastIndexOf()</code> string method in javascript searches the last occurrence of a
-                    substring within a string. The method starts searching from the end of the string for efficiency.
-                </p>
-
-                <pre>
-                   const sentence = "to do or not to do";
-
-// finding index of last "to"
-console.log(sentence.lastIndexOf("to"));
-
-
-const sentence = "to do or not to do";
-
-// nothing to search, so will search for 'undefined'
-console.log(sentence.lastIndexOf());
-console.log('undefined'.lastIndexOf());
-
-                </pre>
-            </div>
-
-            <div class="match">
-                <h5>8. match ()</h5>
-                <br>
-                <p>The <code>match()</code> method in JavaScript matches a series characters within a string using a
-                    <span class="focus2">regular expression</span>.</p>
-                <p>The method accepts a regular expression as an argument and use that regular expression to find any
-                    match. If the match is found then it returns the matching content from the string as an <b>array</b>
-                    of strings.</p>
-
-                <pre>
-                    const str = "Learning To Code Is Learning To Create And Innovate";
-                    const exp = /[A-Z]/g; // Matching capital characters
-                    const matches = str.match(exp);
-                    console.log(matches);
-                    // output: [ "L", "T", "C", "I", "L", "T", "C", "A", "I" ]
-                    
-                    const regexp = "to"; // not a regular expression
-const matches = str.match(regexp);
-console.log(matches);
-                </pre>
-            </div>
-
-            <div class="matchAll">
-                <h5>9. matchAll ()</h5>
-                <br>
-                <p>The <a href="../javascript-string-matchall.php" target="_blank" rel="noopener" class="bpl">matchAll()
-                        string method</a> in javascript is an improved variant of the <span class="focus">match()</span>
-                    method.</p>
-                <p>But the <code>matchAll()</code> method finds all the matching string with its capturing group against
-                    the regular expression.<span id="ezoic-pub-ad-placeholder-193" class="ezoic-adpicker-ad"></span></p>
-                <p>Instead of returning an array the <span class="focus">matchAll()</span> method returns an iterator to
-                    all results matching the string. You will have to explicitly convert it to array using sperad
-                    operator (<code>[...]</code>) or using <span class="focus">Array.from()</span> method.</p>
-                <p class="alert alert-info"><span class="bold">Note</span>: It is compulsory to use <span
-                        class="focus2">g</span> flag with the <span class="focus">matchAll()</span> method.</p>
-
-                <pre>
-                    const series = "to do or not to do";
-
-                    // matching "do" and capturing group
-                    const array = [...series.matchAll(/d(o)/g)];
-                    console.log(array);
-                    console.log(array[0])
-                </pre>
-            </div>
-
-            <div class="repeat">
-                <h5>10. repeat()</h5>
-                <br>
-                <p>The <a rel="noopener" class="bpl">repeat() method</a> concatenates a passed string by a specified
-                    number of times and return it as a new string.</p>
-                <p>A number of times string is to be repeated is passed as an argument in the method, where the number
-                    lies between <span class="focus2">0</span> and <span class="focus2">+Infinity</span>.</p>
-
-                <pre>
-                    const str = "Tick tock, ";
-
-// repeat the string by 2 times
-console.log(str.repeat(2));
-// converts the decimal value to integer
-console.log(str.repeat(3.5));
-// repeat 0 times
-console.log(str.repeat(0));
-                </pre>
-            </div>
-
-            <div class="replace">
-                <h5>11. replace ()</h5>
-                <br>
-                <p>The <a href="../replace-string-javascript.php" target="_blank" rel="noopener" class="bpl">replace
-                        method</a> selects one or all matches from a string and replace it with a <span
-                        class="focus2">replacement string</span> and return it as new string.</p>
-                <p>To find the match method use <span class="focus2">string</span> or <span class="focus2">regular
-                        expression</span>. When a string is passed as an argument then it select only the first match
-                    while when a regular expression is passed then it selects all the matches.</p>
-
-                <pre>
-                   const str = "Carbon emission is increasing day by day.";
-
-// using string to match
-console.log(str.replace("day", "year"));
-
-                </pre>
-            </div>
-
-            <div class="replaceAll">
-                <h5>12. replaceAll ()</h5>
-                <br>
-                <p>The <a href="../replace-all-string-javascript.php" target="_blank" rel="noopener"
-                        class="bpl">replaceAll method</a> returns a new string after replacing all occurrences of
-                    matched pattern with a replacement string.</p>
-                <p>Unlike <span class="focus">replace()</span> method it replaces all the occurrences whether the given
-                    pattern is a string or a regular expression.</p>
-                <p class="alert alert-info"><span class="bold">Note</span>: While using regular expression in the <span
-                        class="focus">replaceAll()</span> method using a global flag (<span class="bold">g</span>) is
-                    compulsory with it otherwise it will throw a 'TypeError'.</p>
-
-                <pre>
-                    const str = "Carbon emission is increasing day by day.";
-
-                    // select all match using both string or regular expression
-                    console.log(str.replaceAll("day", "year"));
-                    console.log(str.replaceAll(/day/g, "month"));
-
-                </pre>
-            </div>
-
-            <div class="search">
-                <h5>13. replaceAll ()</h5>
-                <br>
-                <p>The <a href="../javascript-string-search.php" target="_blank" rel="noopener" class="bpl">search
-                        string method</a> in javascript is used to determine whether a pattern exists within the calling
-                    string or not, if it exists then the method returns the index value of the first match within the
-                    string.</p>
-                <p>The <span class="focus">search</span> method uses regex to search for a pattern in a string, if a
-                    string is passed to search for then the method implicitly convert it to regex.</p>
-
-                <pre>
-                  const str = "kjhBfdbAjdbj";
-console.log(str.search(/[A-Z]/g));
-
-                </pre>
-            </div>
-
-            <div class="slice">
-                <h5>14. slice()</h5>
-                <br>
-                <p>The <a href="../javascript-slice-string.php" target="_blank" rel="noopener" class="bpl">slice string
-                        method</a> in javascript extracts a part of the string and returns it as a new string.<span
-                        id="ezoic-pub-ad-placeholder-196" class="ezoic-adpicker-ad"></span></p>
-                <p>The <code>slice()</code> takes 2 arguments, the first argument is the start index for the slicing
-                    string and the second argument is the end of the slicing string, where the second argument is
-                    optional.</p>
-                <p>The default value of <span class="focus2">endIndex</span> is <span class="focus2">str.length</span>
-                    When the second argument is not passed then the string is sliced from 'startIndex' to the end of the
-                    string.</p>
-
-                <pre>
-const sentence = "Carbon emission is increasing day by day";
-console.log(sentence.slice(5, 15));
-console.log(sentence.slice(5));
-console.log(sentence.slice(-15, -5));
-
-                </pre>
-            </div>
-
-            <div class="split ">
-                <h5>15. split()</h5>
-                <br>
-                <p>The <a href="../split-in-javascript.php" target="_blank" rel="noopener" class="bpl">split string
-                        method</a> in javascript divides the given string intro substring and returns an array of
-                    substrings.</p>
-
-                <pre>
-const sentence = "Carbon emission is increasing day by day";
-
-// no pattern -> return whole string in array
-console.log(sentence.split());
-// split at each space
-console.log(sentence.split(''));
-// split at each space
-console.log(sentence.split(' '));
-// split at each 'is'
-console.log(sentence.split('is'));
-
-                </pre>
-            </div>
-
-            <div class="startsWith">
-                <h5>16. startsWith ()</h5>
-                <br>
-                <p>The <a href="../javascript-startswith.php" target="_blank" rel="noopener" class="bpl">startsWith
-                        string method</a> in javascript determines whether a string starts with some given substring or
-                    not. If it starts with the desired string then it returns <code>true</code> else return
-                    <code>false</code>.</p>
-                <p>The <span class="focus">startsWith</span> method is case-sensitive.</p>
-                <pre>
-                    const sentence = "Carbon emission is increasing day by day";
-                    console.log(sentence.startsWith("Car"));
-                    console.log(sentence.startsWith("carbon")); // return false case-sensitive
-                    console.log(sentence.startsWith("bon", 3));
-
-                </pre>
-            </div>
-
-            <div class="substr">
-                <h5>17. substr ()</h5>
-                <br>
-                <p>The <a href="../substring-in-javascript.php#substr-method" target="_blank" rel="noopener"
-                        class="bpl">substr() string method</a> in javascript is used to extract a substring from a
-                    string. It returns a part of the string, starting at a specific index and ending after a given
-                    number of characters.</p>
-
-                <code
-                    class="language-js">str<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span>startIndex<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">,</span> length<span class="token punctuation">]</span><span class="token punctuation">)</span></code>
-                <ul>
-                    <li><span class="focus2">startIndex</span> - It specifies the index value from where the substring
-                        starts</li>
-                    <li><span class="focus2">length</span> - It defines number of characters to be extracted</li>
-                </ul>
-                <p>If the value of <span class="focus2">startIndex</span> is negative then the index is counted from the
-                    end of the string in opposite direction. If it is <code>NaN</code> then it is treated as 0.</p>
-
-                <pre>
-const sentence = "Carbon emission is increasing day by day";
-
-// start at index 10, cut 6 characters
-console.log(sentence.substr(10, 6));
-// start at index 10, cut all characters
-console.log(sentence.substr(10));
-
-// negative index
-console.log(sentence.substr(-4, 3));
-
-                </pre>
-            </div>
-
-            <div class="substring">
-                <h5>18. substring()</h5>
-                <br>
-                <p style="height: auto !important;">The <a href="../substring-in-javascript.php#substring-method" target="_blank" rel="noopener" class="bpl">substring() method</a> extracts a part of string between 2 given index values. It returns a part of the string, starting at a specific index and ending after a given number of characters.<span id="ezoic-pub-ad-placeholder-198" class="ezoic-adpicker-ad"></span></p>
-                <code class="language-js">str<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>startIndex<span class="token punctuation">,</span> endIndex<span class="token punctuation">)</span></code>
-
-                <ul>
-                    <li><span class="focus2">startIndex</span> - It specifies the index value from where the substring starts</li>
-                    <li><span class="focus2">endIndex</span> - It specifies the index value from where the substring ends</li>
-                  </ul>
-                  <p>If <span class="focus2">endIndex</span> is not specified then it is treated as the last character of the string.</p>
-
-                <pre>
-const sentence = "Carbon emission is increasing day by day";
-
-// extracting string
-// start at index 10, cut all characters
-console.log(sentence.substring(10));
-// start at index 10, and end at index 20
-console.log(sentence.substring(10, 20));
-
-// startIndex > endIndex
-console.log(sentence.substring(20, 10));
-                </pre>
-            </div>
-            
-            <div class="toLowerCase">
-                <h5>18. toLowerCase()</h5>
-                <br>
-                <p>The <code>toLowerCase()</code> string method in javascript converts the case of a string to lowercase and returns it as a new string.</p>
-
-                <pre>
-const sentence = "CARBON emission IS INCREASING DAY BY DAY";
-console.log(sentence.toLowerCase());
-                </pre>
-            </div>
-
-            <div class="toUpperCase">
-                <h5>18. toUpperCase()</h5>
-                <br>
-                <p>The <a href="../javascript-uppercase.php" target="_blank" rel="noopener" class="bpl">toUpperCase string method</a> in javascript returns a new string by converting the calling string to uppercase.</p>
-
-                <pre>
-const sentence = "carbon emission is increasing day by day";
-console.log(sentence.toUpperCase());
-                </pre>
-            </div>
-
-            <div class="toString">
-                <h5>18. toString()</h5>
-                <br>
-                <p>The <code>toString()</code> string method in javascript returns a string representing the specified object.</p>
-                <p style="height: auto !important;">This method also convert numbers to strings in a different number system. For example you can convert a number to a string in binary system by using <code>toString(2)</code>, octal system by using <code>toString(8)</code> and hexadecimal system by using <code>toString(16)</code>, etc.<span id="ezoic-pub-ad-placeholder-199" class="ezoic-adpicker-ad"></span></p>
-
-                <pre>
-const str = new String("hello World!");
-console.log(str.toString(str));
-const num = 20;
-console.log(num.toString(2));
-                </pre>
-            </div>
-            
-            <div class="trim">
-                <h5>18. trim()</h5>
-                <br>
-                <p>The <code>trim()</code> string method in javascript removes whitespaces from both ends of the string. Whitespaces are space, tabs, newline, etc.</p>
-
-                <pre>
-const str = "    TutorialsTonight    ";
-console.log(str.trim());
-                </pre>
-            </div>
-
-            <div class="valueOf">
-                <h5>18. valueOf()</h5>
-                <br>
-                <p>The <code>valueOf()</code> string method in javascript returns the primitive value of a <b>String object</b>.</p>
-
-                <pre>
-const str = new String("hello world");
-console.log(str.valueOf(str));
-                </pre>
+            <div class="col-5">
+                <iframe src="https://www.programiz.com/javascript/online-compiler/" style="width: 100%; height: 400px;">
+                </iframe>
             </div>
         </div>
+
     </div>
-    <hr>
+
+    <div *ngIf="concept === 'Array' " class="list-Array-menthds">
+
+    </div>
 </div>
-<!-- <iframe src="https://www.programiz.com/javascript/online-compiler/"
-                 style="width: 400px; height: 400px;">
-                 const quote = "Learning to code is learning to create and innovate";
-                </iframe> -->
