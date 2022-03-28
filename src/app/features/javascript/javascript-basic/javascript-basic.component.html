@@ -599,6 +599,173 @@
     </div>
 
     <div *ngIf="concept === 'Array' " class="list-Array-menthds">
+        <p>Frequently used Array methods that used in daily playtime </p>
+        <br>
+        <div class="list-content" *ngFor="let concept of listOfArrayMentods; let i =index">
+            <p style="margin-right: 1rem;">{{ i+1 }}.
+                <a (click)="selectedArray = concept" href="javascript:void(0)">{{concept}}</a>
+            </p>
+        </div>
 
+        <br>
+        <button color="primary" (click)="((showAllArrayMenthods = !showAllArrayMenthods )&& (selectedArray = '')) "
+            mat-raised-button>
+            {{ !showAllArrayMenthods ? 'Show ALL' : 'Hide ALL' }}
+        </button>
+        <p class="text-end">
+            <a href='{{ javaScript_basic}}' target="_blank">Link to MDN</a>
+        </p>
+        <hr>
+        <div class="row">
+            In process.... Yet to come
+        </div>
+    </div>
+
+    <div *ngIf="concept === 'Console' " class="list-Console-menthds">
+
+        <p>Frequently used Console methods that used in daily playtime </p>
+        <br>
+        <div class="list-content" *ngFor="let concept of listofConsoleMethods; let i =index">
+            <p style="margin-right: 1rem;">{{ i+1 }}.
+                <a (click)="selectedConsole = concept" href="javascript:void(0)">{{concept}}</a>
+            </p>
+        </div>
+
+        <br>
+        <button color="primary" (click)="((showAllConsoleMenthods = !showAllConsoleMenthods )&& (selectedConsole = '')) "
+            mat-raised-button>
+            {{ !showAllConsoleMenthods ? 'Show ALL' : 'Hide ALL' }}
+        </button>
+        <p class="text-end">
+            <a href='{{ javaScript_basic}}' target="_blank">Link to MDN</a>
+        </p>
+        <hr>
+        <div class="row">
+            <div class="col-7">
+                <div class="console-menthods">
+                    <div *ngIf="selectedConsole === 'console.log()' || showAllConsoleMenthods " class="log()">
+                        <h5>1. console.log()</h5>
+                        <br>
+                        <p><code>console.log()</code> method is the most commonly used console method. It is used to
+                            output a message in the console.</p>
+
+                        <pre>
+    console.log(123); //number
+    console.log("Hello World!"); //string
+    console.log(10 + 20); //expression
+    console.log(new Date()); //object
+    </pre>
+                    </div>
+
+                    <div *ngIf="selectedConsole === 'console.assert()' || showAllConsoleMenthods "
+                        class="console.assert()">
+                        <h5>2. console.assert()</h5>
+                        <br>
+                        <p>The <code>console.assert()</code> method asserts (claim) a condition and if the condition is
+                            false then output a message in the console. If the assertion is <code>true</code> then
+                            nothing happens.</p>
+
+                        <pre>
+    console.assert(false, "Statement is false");
+    var num = 10;
+    console.assert(num > 20, "Number is less than 20");
+    console.assert(25 === '25', "25 is not equal to '25'");
+    </pre>
+                    </div>
+
+                    <div *ngIf="selectedConsole === 'console.clear()' || showAllConsoleMenthods "
+                        class="console.clear()">
+                        <h5>3. console.clear()</h5>
+                        <br>
+                        <p>The <code>console.assert()</code> method asserts (claim) a condition and if the condition is
+                            false then output a message in the console. If the assertion is <code>true</code> then
+                            nothing happens.</p>
+
+    <pre>
+    console.assert(false, "Statement is false");
+    var num = 10;
+    console.assert(num > 20, "Number is less than 20");
+    console.assert(25 === '25', "25 is not equal to '25'");
+    </pre>
+                    </div>
+
+                    <div *ngIf="selectedConsole === 'console.count()' || showAllConsoleMenthods "
+                        class="console.count()">
+                        <h5>4. console.count()</h5>
+                        <br>
+                        <p>The <code>console.count()</code> method logs the number of time <code>count()</code> method
+                            has been called.</p>
+                        <p>The <code>count()</code> method accepts an argument which is a label to the output, it is
+                            logged every time <code>count()</code> function is called. It is optional, its default value
+                            is "default".</p>
+
+
+    <pre>
+    for (let i = 0; i < 5; i++)
+    console.count("Count number");
+    </pre>
+                    </div>
+
+                    <div *ngIf="selectedConsole === 'console.dir()' || showAllConsoleMenthods " class="console.dir()">
+                        <h5>5. console.dir()</h5>
+                        <br>
+                        <p>The <code>console.dir()</code> method displays an interactive list of all the properties of a
+                            specified object.</p>
+
+
+    <pre>
+    for (let i = 0; i < 5; i++)
+    console.count("Count number");
+    </pre>
+                    </div>
+
+                    <div *ngIf="selectedConsole === 'console.error()' || showAllConsoleMenthods "
+                        class="console.error()">
+                        <h5>6. console.error()</h5>
+                        <br>
+                        <p>The <code>console.error()</code> method outputs an error message to the console.</p>
+                        <p>The <code>error()</code> method of the console object is used to output the error in the
+                            console.</p>
+                    </div>
+
+                    <div *ngIf="selectedConsole === 'console.table()' || showAllConsoleMenthods "
+                        class="console.table()">
+                        <h5>7. console.table()</h5>
+                        <br>
+                        <p>The first column of the table is labeled as an index. For objects index will be property name
+                            and for array index are the actual index of array elements.</p>
+
+
+    <pre>
+    const arr = ["a", "b", "c", "d", "e"];
+    console.table(arr);
+    <!-- const user =  {name: "Henry",  id: "iuA98",  age: 22} -->
+
+    <!-- console.table(user); -->
+    </pre>
+                    </div>
+
+                    <div *ngIf="selectedConsole === 'console.time()' || showAllConsoleMenthods " class="console.time()">
+                        <h5>8. console.time()</h5>
+                        <br>
+                        <p>To use <code>console.time()</code> you have to give a timer a unique name then execute the
+                            javascript codes and when you call <code>console.timeEnd()</code> with the same name then
+                            the browser will output the time since timer with the same name started.</p>
+
+
+    <pre>
+    console.time("trackLoop");
+    for (let i = 0; i < 10000; i++)
+    i
+    console.timeEnd("trackLoop");
+    </pre>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <iframe src="https://www.programiz.com/javascript/online-compiler/" style="width: 100%; height: 400px;">
+                </iframe>
+            </div>
+        </div>
     </div>
 </div>
