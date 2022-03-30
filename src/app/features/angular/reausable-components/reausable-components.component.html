@@ -9,14 +9,17 @@
     <div class="col-3">
       <section class="example-section" [formGroup]="popUpIncludes">
         <mat-checkbox color="warn" class="example-margin" formControlName="showAsPopUp">Show As PopUp</mat-checkbox><br>
-        <mat-checkbox color="warn" class="example-margin" formControlName="showHeader">Show Header</mat-checkbox><br>
+        <mat-checkbox color="warn" class="example-margin" formControlName="showHeader">Show Header</mat-checkbox> 
+        <input class="m-2" type="text" placeholder="Header value" formControlName="headerValue"><br>
         <mat-checkbox color="warn" class="example-margin" formControlName="comfirmation">Comfirmation Pop UP
         </mat-checkbox>
         <br>
         <mat-checkbox *ngIf="this.popUpIncludes.get('showAsPopUp')?.value" color="warn" class="example-margin"
-          formControlName="showFooter">Show Footer</mat-checkbox><br>
+          formControlName="showFooter">Show Footer</mat-checkbox>
+        <br>
         <mat-checkbox *ngIf="this.popUpIncludes.get('showAsPopUp')?.value" color="warn" class="example-margin"
-          formControlName="footerHeading">Give Footer Heading</mat-checkbox><br>
+          formControlName="footerHeading">Give Footer Heading</mat-checkbox>
+          <input class="m-2" type="text" placeholder="footer value" formControlName="footerValue"><br>
       </section>
     </div>
     <div class="col-3">

@@ -24,15 +24,18 @@
 }
 .large {
     left: 5%;
+    right: 5%;
     width: 90%;
 }
 .medium {
     left: 20%;
-    right:20%
+    right:20%;
+    width: 60%;
 }
 .small {
     left: 30%;
-    right:30% 
+    right:30%;
+    width: 40%;
 }
 .success {
     background-color: green !important;
