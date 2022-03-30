@@ -1,0 +1,75 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.75);
+}
+.general-reusable-content {
+    top: 15%;
+    left: 1%;
+    right: 1%;
+    background: white;
+    border-radius: 0.5rem;
+}
+.show-as-popup {
+    position: fixed;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    border: 0.2rem solid rgb(117, 117, 117);
+    border-radius: 0.3rem;
+}
+.show-as-popup-corners {
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+.large {
+    left: 5%;
+    width: 90%;
+}
+.medium {
+    left: 20%;
+    right:20%
+}
+.small {
+    left: 30%;
+    right:30% 
+}
+.success {
+    background-color: green !important;
+}
+
+.error {
+    background-color:red !important;
+}
+.error-message {
+    color: red;
+}
+.reusable-header {
+    background-color: #123456;
+    color: #fff;
+    display: flex;
+    padding: 0.8rem;
+}
+.reusable-footer {
+    display: flex;
+    padding: 0.8rem;
+}
+.reusable-header-value {
+    float: left;
+}
+.reusable-footer-value {
+    float: left;
+}
+.reusable-header-action {
+    display: flex;
+    margin-left: auto;
+}
+.reusable-footer-action {
+    display: flex;
+    margin-left: auto;
+}
+.reusable-content {
+    margin:0 1rem;
+    height: 60vh;
+    overflow: auto;
+}

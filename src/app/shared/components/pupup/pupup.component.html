@@ -1,0 +1,93 @@
+<div *ngIf="this.required?.showHeader || this.required?.showFooter">
+    <div class="backdrop" [ngClass]="{'backdrop':showAsPopUp}"></div>
+
+    <div class="general-reusable-content"
+        [ngClass]="{'show-as-popup':showAsPopUp, 'small': size==='small', 'medium': size==='medium', 'large': size==='large'}">
+        <div *ngIf="showHeader" class="reusable-header" [ngClass]="{'show-as-popup-corners':showAsPopUp}"
+            [ngClass]="statusType">
+            <div class="reusable-header-value">
+                <h3> {{ headerOne }} </h3>
+            </div>
+            <div class="reusable-header-action">
+                <button mat-raised-button *ngIf="showAsPopUp" (click)="onClose()">
+                    close-btn/icons
+                </button>
+            </div>
+        </div>
+        <div class="reusable-content">
+            <h1 class="text-center"> Content of static display like table of infotmation</h1>
+            <h1 class="text-center">Or any static information</h1>
+            <p class="text-center error-message">
+                {{errorMessage}}
+            </p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum autem, numquam officia
+                dignissimos
+                impedit saepe inventore aut repellendus harum ipsa quibusdam, eos vitae odio, incidunt perferendis
+                provident
+                ex doloribus iusto?
+                Totam delectus ratione explicabo repudiandae quaerat facilis animi ipsum, accusantium veniam cum
+                dignissimos
+                eaque temporibus quo quasi sequi, enim quibusdam amet ut tempore saepe accusamus natus illo!
+                Tempora, illum.
+                Animi.
+                Quod tenetur at voluptate molestiae nostrum necessitatibus possimus cupiditate fugit quis impedit
+                deleniti
+                iste, animi deserunt modi ab placeat dolorem tempore expedita qui. Provident facere repudiandae
+                blanditiis
+                aliquid ipsum assumenda!
+                Dicta tempore fugit optio praesentium deserunt blanditiis voluptas, ad explicabo ullam facilis unde
+                fuga
+                nisi illum nulla voluptatum eos? Non et excepturi, fugit culpa nulla alias debitis facere? Nam,
+                sapiente.
+                A labore est necessitatibus assumenda enim! Blanditiis perferendis rerum voluptatibus numquam
+                laudantium
+                quis, odio id est atque praesentium autem. Hic quo sunt debitis eaque impedit deserunt est
+                doloremque illum
+                vero?
+                Porro, maxime exercitationem ipsam consectetur, omnis saepe nesciunt error natus laborum suscipit
+                tempora
+                inventore eveniet expedita odio tempore! Itaque ab aut tempore nisi accusantium id obcaecati
+                placeat. Enim,
+                nulla? Corporis?
+                Pariatur corrupti accusamus voluptatibus autem expedita deleniti, maxime numquam eveniet
+                consequuntur minus
+                reprehenderit odio eaque qui laboriosam harum dolores voluptatem odit. Provident vel dolores
+                blanditiis
+                harum quibusdam deleniti, excepturi natus!
+                Culpa, distinctio odio minus voluptate ea illo quaerat provident earum sed incidunt exercitationem
+                aut
+                cupiditate dicta laboriosam nemo! Distinctio iusto doloremque dignissimos! Amet, atque praesentium
+                rerum
+                culpa ratione suscipit et!
+                Placeat, provident quaerat! Iusto odit accusamus eligendi dolorem vel reiciendis dolores, dolore
+                asperiores
+                quisquam debitis ad? Enim voluptatibus nemo alias, porro nostrum debitis magni blanditiis excepturi!
+                Ratione
+                nisi aliquid dignissimos?
+                Accusamus placeat consectetur sint, eum magni quidem saepe unde vitae, at reprehenderit rem labore.
+                Error
+                voluptates nemo aspernatur asperiores quasi autem excepturi deleniti cum vel consequatur veritatis,
+                at
+                doloremque! Aut.</p>
+        </div>
+
+        <div class="reusable-footer" *ngIf="showAsPopUp && showFooter">
+            <div class="reusable-footer-value">
+                <h5> {{ footerHeading }}</h5>
+            </div>
+            <div class="reusable-footer-action">
+                <button *ngIf="!confirmation" mat-raised-button (click)="onClose()">
+                    close-btn
+                </button>
+                <div *ngIf="confirmation">
+                    <button class="m-1" mat-raised-button (click)="onClose('NO')">
+                        No
+                    </button>
+                    <button class="m-1" mat-raised-button (click)="onClose('YES')">
+                        Yes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

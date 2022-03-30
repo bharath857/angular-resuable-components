@@ -1,0 +1,56 @@
+<div class="content">
+  <div>
+    <br>
+    <p>Dealing with Pop up and resuable component with static content without Angular material</p>
+    <p>Handling PopUp with template</p>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <section class="example-section" [formGroup]="popUpIncludes">
+        <mat-checkbox color="warn" class="example-margin" formControlName="showAsPopUp">Show As PopUp</mat-checkbox><br>
+        <mat-checkbox color="warn" class="example-margin" formControlName="showHeader">Show Header</mat-checkbox><br>
+        <mat-checkbox color="warn" class="example-margin" formControlName="comfirmation">Comfirmation Pop UP
+        </mat-checkbox>
+        <br>
+        <mat-checkbox *ngIf="this.popUpIncludes.get('showAsPopUp')?.value" color="warn" class="example-margin"
+          formControlName="showFooter">Show Footer</mat-checkbox><br>
+        <mat-checkbox *ngIf="this.popUpIncludes.get('showAsPopUp')?.value" color="warn" class="example-margin"
+          formControlName="footerHeading">Give Footer Heading</mat-checkbox><br>
+      </section>
+    </div>
+    <div class="col-3">
+      Select size <br>
+      <mat-radio-group [(ngModel)]="size">
+        <mat-radio-button color="warn" class="example-margin m-1" value="large">Large</mat-radio-button>
+        <mat-radio-button color="warn" class="example-margin m-1" value="medium">Medium</mat-radio-button>
+        <mat-radio-button color="warn" class="example-margin" value="small">Small</mat-radio-button>
+      </mat-radio-group>
+      <br>
+    </div>
+
+    <div class="col-3">
+      Select Type <br>
+      <mat-radio-group [(ngModel)]="type">
+        <mat-radio-button color="warn" class="example-margin m-1" value="nostatus">Normal</mat-radio-button>
+        <mat-radio-button color="warn" class="example-margin m-1" value="success">Success</mat-radio-button>
+        <mat-radio-button color="warn" class="example-margin" value="error">Error</mat-radio-button>
+      </mat-radio-group>
+      <br>
+    </div>
+  </div>
+
+
+  <div class="execute">
+    <button color="warn" class="m-2" (click)="initiatecomponent()" mat-raised-button>Execute With component
+      refreance</button>
+    <button color="warn" class="m-2" (click)="initiatecomponent()" mat-raised-button>Execute programatically</button>
+  </div>
+
+  <div *ngIf="showPopUp" class="row">
+    <app-pupup [required]="popUpdetails" (close)="popUpClosed($event)"></app-pupup>
+  </div>
+  <div style="height: 20vh;">
+
+  </div>
+</div>

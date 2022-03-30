@@ -10,6 +10,11 @@ import { MaterialModule } from '../app/shared/material/material.module';
 import { JavascriptComponent } from './features/javascript/javascript/javascript.component';
 import { JavascriptAdvancedComponent } from './features/javascript/javascript-advanced/javascript-advanced.component';
 import { JavascriptBasicComponent } from './features/javascript/javascript-basic/javascript-basic.component';
+import { ReausableComponentsComponent } from './features/angular/reausable-components/reausable-components.component';
+import { BasicComponent } from './features/angular/basic/basic.component';
+import { DataTablesModule } from "angular-datatables";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PupupComponent } from './shared/components/pupup/pupup.component';
 
 @NgModule({
   declarations: [
@@ -18,10 +23,15 @@ import { JavascriptBasicComponent } from './features/javascript/javascript-basic
     DashboardComponent,
     JavascriptBasicComponent,
     JavascriptComponent,
-    JavascriptAdvancedComponent
+    JavascriptAdvancedComponent,
+    ReausableComponentsComponent,
+    BasicComponent,
+    PupupComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     MaterialModule
   ],
