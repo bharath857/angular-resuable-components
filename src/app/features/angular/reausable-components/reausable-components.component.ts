@@ -13,6 +13,7 @@ export class ReausableComponentsComponent implements OnInit {
   showPopUp: boolean = false;
   size: ResuablePopUpcomponentSize = ResuablePopUpcomponentSize.medium;
   type: ResuablePopUpcomponentstatusType = ResuablePopUpcomponentstatusType.nostatus;
+
   constructor(private formBuilder: FormBuilder) {
     this.popUpIncludes = this.formBuilder.group({
       showHeader: [true],
@@ -50,12 +51,3 @@ export class ReausableComponentsComponent implements OnInit {
     console.log(event)
   }
 }
-/* showHeader?: boolean;
-  showFooter?: boolean;
-  headerOne: string;
-  footerHeading?: string;
-  showAsPopUp?: boolean;
-  size?: ResuablePopUpcomponentSize;
-  statusType?: ResuablePopUpcomponentstatusType;
-  errorMessage?: string;
-  confirmation?:boolean */
