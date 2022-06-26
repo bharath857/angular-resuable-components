@@ -16,13 +16,21 @@ export class ReausableComponentsComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
     this.popUpIncludes = this.formBuilder.group({
-      showHeader: [true],
-      headerValue:['Heading'],
-      footerValue:['footer'],
-      showFooter: [false],
-      footerHeading: [false],
-      showAsPopUp: [true],
-      comfirmation: [false],
+      body:this.formBuilder.group({
+        showHeader: [true],
+        headerValue:['Heading'],
+        footerValue:['footer'],
+        showFooter: [false],
+        footerHeading: [''],
+        showAsPopUp: [true],
+        comfirmation: [false],
+      }),
+      content:this.formBuilder.group({
+        contentType:['message'],
+        message:['Message to display in content'],
+        color:['black'],
+        editable:[false]
+      })
     })
   }
 
@@ -30,17 +38,21 @@ export class ReausableComponentsComponent implements OnInit {
   }
 
   initiatecomponent() {
+    console.log(this.popUpIncludes)
     this.showPopUp = false;
     setTimeout(() => {
       this.popUpdetails = {
-        headerOne: this.popUpIncludes.get('headerValue')?.value,
-        showHeader: this.popUpIncludes.get('showHeader')?.value,
-        showFooter: this.popUpIncludes.get('showFooter')?.value,
-        footerHeading: this.popUpIncludes.get('footerHeading')?.value ? this.popUpIncludes.get('footerValue')?.value : '',
-        showAsPopUp: this.popUpIncludes.get('showAsPopUp')?.value,
-        confirmation: this.popUpIncludes.get('comfirmation')?.value,
+        headerOne: this.popUpIncludes.get('body')?.get('headerValue')?.value,
+        showHeader: this.popUpIncludes.get('body')?.get('showHeader')?.value,
+        showFooter: this.popUpIncludes.get('body')?.get('showFooter')?.value,
+        footerHeading: this.popUpIncludes.get('body')?.get('footerHeading')?.value ? this.popUpIncludes.get('body')?.get('footerValue')?.value : '',
+        showAsPopUp: this.popUpIncludes.get('body')?.get('showAsPopUp')?.value,
+        confirmation: this.popUpIncludes.get('body')?.get('comfirmation')?.value,
         size: this.size,
-        statusType:this.type
+        statusType:this.type,
+        message:this.popUpIncludes.get('content')?.get('message')?.value,
+        color:this.popUpIncludes.get('content')?.get('color')?.value,
+        editable:this.popUpIncludes.get('content')?.get('editable')?.value,
       }
       this.showPopUp = true;
       console.log(this.popUpdetails)

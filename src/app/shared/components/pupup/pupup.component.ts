@@ -17,8 +17,9 @@ export class PupupComponent implements OnInit {
   showAsPopUp: boolean = false;
   size: string = 'medium';
   statusType: string = '';
-  errorMessage: string = '';
   confirmation: boolean = false;
+  message:string = '';
+  color:string = '';
 
   constructor() {
   }
@@ -34,9 +35,10 @@ export class PupupComponent implements OnInit {
       this.required?.showAsPopUp ? this.showAsPopUp = this.required.showAsPopUp : this.showAsPopUp = false;
       this.required?.size ? this.size = this.required.size : this.size = '';
       this.required?.statusType ? this.statusType = this.required.statusType : this.statusType = '';
-      this.required?.errorMessage ? this.errorMessage = this.required.errorMessage : this.errorMessage = '';
+      this.required?.message ? this.message = this.required.message : this.message = '';
+      this.required?.message ? this.message = this.required.message : this.message = '';
       this.required?.confirmation ? this.confirmation = this.required.confirmation : this.confirmation = false;
-      console.log(this.size)
+      this.required?.color ? this.color = this.required.color : this.color = '';
     }
   }
 
@@ -53,7 +55,9 @@ export interface ResuablePopUpcomponent {
   showAsPopUp?: boolean;
   size?: ResuablePopUpcomponentSize;
   statusType?: ResuablePopUpcomponentstatusType;
-  errorMessage?: string;
+  message?:string;
+  color?:string;
+  editable?:boolean;
   confirmation?: boolean
 }
 

@@ -5,48 +5,96 @@
     <p>Handling PopUp with template</p>
   </div>
 
-  <div class="row">
-    <div class="col-3">
-      <section class="example-section" [formGroup]="popUpIncludes">
-        <mat-checkbox color="warn" class="example-margin" formControlName="showAsPopUp">Show As PopUp</mat-checkbox><br>
-        <mat-checkbox color="warn" class="example-margin" formControlName="showHeader">Show Header</mat-checkbox>
-        <input class="m-2" type="text" placeholder="Header value" formControlName="headerValue"><br>
-        <mat-checkbox color="warn" class="example-margin" formControlName="comfirmation">Comfirmation Pop UP
-        </mat-checkbox>
-        <br>
-        <mat-checkbox *ngIf="this.popUpIncludes.get('showAsPopUp')?.value" color="warn" class="example-margin"
-          formControlName="showFooter">Show Footer</mat-checkbox>
-        <br>
-        <mat-checkbox *ngIf="this.popUpIncludes.get('showAsPopUp')?.value" color="warn" class="example-margin"
-          formControlName="footerHeading">Give Footer Heading</mat-checkbox>
-        <input class="m-2" type="text" placeholder="footer value" formControlName="footerValue"><br>
-      </section>
-    </div>
-    <div class="col-3">
-      Select size <br>
-      <mat-radio-group [(ngModel)]="size">
-        <mat-radio-button color="warn" class="example-margin m-1" value="large">Large</mat-radio-button>
-        <mat-radio-button color="warn" class="example-margin m-1" value="medium">Medium</mat-radio-button>
-        <mat-radio-button color="warn" class="example-margin" value="small">Small</mat-radio-button>
-      </mat-radio-group>
-      <br>
-    </div>
+  <div class="mx-3">
+    <div>
+      <form action="" [formGroup]="popUpIncludes">
 
-    <div class="col-3">
-      Select Type <br>
-      <mat-radio-group [(ngModel)]="type">
-        <mat-radio-button color="warn" class="example-margin m-1" value="nostatus">Normal</mat-radio-button>
-        <mat-radio-button color="warn" class="example-margin m-1" value="success">Success</mat-radio-button>
-        <mat-radio-button color="warn" class="example-margin" value="error">Error</mat-radio-button>
-      </mat-radio-group>
-      <br>
+        <h3>Body of Component</h3>
+
+        <section class="example-section" formGroupName="body">
+          <mat-checkbox color="warn" class="example-margin" formControlName="showAsPopUp">Show As PopUp</mat-checkbox>
+          <br>
+          <div *ngIf="this.popUpIncludes.get('body')?.get('showAsPopUp')?.value === true">
+            *Plese select header or footer to show as pop-up <br>
+          </div>
+
+          <mat-checkbox color="warn" class="example-margin" formControlName="showHeader">Show Header</mat-checkbox>
+          <input class="m-2" type="text" placeholder="Header value" formControlName="headerValue"><br>
+          <mat-checkbox color="warn" class="example-margin" formControlName="comfirmation">Comfirmation Pop UP
+          </mat-checkbox>
+          <br>
+          <mat-checkbox
+            *ngIf="this.popUpIncludes.get('body')?.get('showAsPopUp')?.value || this.popUpIncludes.get('body')?.get('comfirmation')?.value"
+            color="warn" class="example-margin" formControlName="showFooter">Show Footer</mat-checkbox>
+          <br>
+          <mat-checkbox
+            *ngIf="this.popUpIncludes.get('body')?.get('showAsPopUp')?.value || this.popUpIncludes.get('body')?.get('comfirmation')?.value"
+            color="warn" class="example-margin" formControlName="footerHeading">Footer Heading</mat-checkbox>
+          <input class="m-2" type="text" placeholder="footer value" formControlName="footerValue"><br>
+
+        </section>
+        <hr>
+        <h3>Content type of Component, message or Table</h3>
+
+        <section class="example-section" formGroupName="content">
+
+          <mat-radio-group formControlName="contentType">
+            <mat-radio-button class="example-margin m-2" value="message">Message</mat-radio-button>
+            <mat-radio-button class="example-margin" value="table">Table</mat-radio-button>
+          </mat-radio-group>
+          <br>
+          <br>
+          <div *ngIf="this.popUpIncludes.get('content')?.get('contentType')?.value === 'message' ">
+            <div style="display:flex;">
+              <p style="justify-content:left; margin-right: 1rem;">Message to display</p>
+              <textarea style="justify-content:right ;" cols="40" rows="3" placeholder="Send Message"
+                formControlName="message">
+                </textarea>
+            </div>
+            <label style="margin-right: 4rem;">Text Colour </label>
+            <select class="mt-2" name="message-colour" id="" formControlName="color">
+              <option value="black">Black</option>
+              <option value="green">Green</option>
+              <option value="red">Red</option>
+            </select><br>
+          </div>
+          <div *ngIf="this.popUpIncludes.get('content')?.get('contentType')?.value === 'table' ">
+            *http://jsonplaceholder.typicode.com/users
+            <mat-checkbox color="warn" class="example-margin" formControlName="editable">Edit able Table</mat-checkbox>
+            <h2> *Table is yet to be built</h2>
+          </div>
+        </section>
+      </form>
+
+    </div>
+    <hr>
+    <div class="size-component">
+      <h3>Size of Component</h3>
+
+      <div>
+        Select size <br>
+        <mat-radio-group [(ngModel)]="size">
+          <mat-radio-button color="warn" class="example-margin m-1" value="large">Large</mat-radio-button>
+          <mat-radio-button color="warn" class="example-margin m-1" value="medium">Medium</mat-radio-button>
+          <mat-radio-button color="warn" class="example-margin m-1" value="small">Small</mat-radio-button>
+        </mat-radio-group>
+        <br>
+        <br>
+        Select Type <br>
+        <mat-radio-group [(ngModel)]="type">
+          <mat-radio-button color="warn" class="example-margin m-1" value="nostatus">Normal</mat-radio-button>
+          <mat-radio-button color="warn" class="example-margin m-1" value="success">Success</mat-radio-button>
+          <mat-radio-button color="warn" class="example-margin m-1" value="error">Error</mat-radio-button>
+        </mat-radio-group>
+        <br>
+      </div>
     </div>
   </div>
 
-  <div class="execute">
-    <button color="warn" class="m-2" (click)="initiatecomponent()" mat-raised-button>Execute With component
+  <div class="">
+    <button color="warn" class="m-2" (click)="initiatecomponent()" mat-stroked-button>Execute With component
       refreance</button>
-    <button color="warn" class="m-2" (click)="initiatecomponent()" mat-raised-button>Execute programatically</button>
+    <button color="warn" class="m-2" (click)="initiatecomponent()" mat-stroked-button>Execute programatically</button>
   </div>
 
   <div *ngIf="showPopUp" class="row">
@@ -56,5 +104,3 @@
 
   </div>
 </div>
-
-<!--  -->

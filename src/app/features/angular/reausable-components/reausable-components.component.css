@@ -1,3 +1,6 @@
 .execute {
     display: flex;
 }
+.content{
+    padding: 0 1rem;
+}
