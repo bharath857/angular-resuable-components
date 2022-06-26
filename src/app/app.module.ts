@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,10 +12,16 @@ import { JavascriptAdvancedComponent } from './features/javascript/javascript-ad
 import { JavascriptBasicComponent } from './features/javascript/javascript-basic/javascript-basic.component';
 import { ReausableComponentsComponent } from './features/angular/reausable-components/reausable-components.component';
 import { BasicComponent } from './features/angular/basic/basic.component';
-import { DataTablesModule } from "angular-datatables";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PupupComponent } from './shared/components/pupup/pupup.component';
+import { AppConfigService } from './shared/initilizers/env-variables/app-config.service';
+import { ProfileService } from './shared/services/tasks-api/profile/profile.service';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+export function initilizeLink(endpoints: AppConfigService): any {
+  return () => endpoints.loadConfig();
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,9 +39,16 @@ import { PupupComponent } from './shared/components/pupup/pupup.component';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    MaterialModule
+    HttpClientModule,
+    MaterialModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [{
+    provide:APP_INITIALIZER,
+    useFactory:initilizeLink,
+    deps:[AppConfigService],
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
