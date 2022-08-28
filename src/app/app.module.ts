@@ -44,10 +44,10 @@ export function initilizeLink(endpoints: AppConfigService): any {
     BrowserAnimationsModule
   ],
   providers: [{
-    provide:APP_INITIALIZER,
-    useFactory:initilizeLink,
-    deps:[AppConfigService],
-    multi:true
+    provide: APP_INITIALIZER,
+    useFactory: initilizeLink,
+    deps: [AppConfigService],
+    multi: true
   }],
   bootstrap: [AppComponent]
 })

@@ -10,6 +10,5 @@ app.use(express.static('./dist/angular-resuable-components'));
 app.get('/*', (req, res) =>
     res.sendFile('index.html', {root: 'dist/angular-resuable-components/'}),
 );
-
 // Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080);
